@@ -4,590 +4,409 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martin Ndegwa - Portfolio</title>
-  
-    <!-- Styles -->
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #764ba2;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #764ba2;
-        }
-
-        main {
-            margin-top: 80px;
-        }
-
-        section {
-            padding: 4rem 0;
-            margin: 2rem 0;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-        }
-
-        h1, h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        h1 {
-            font-size: 3rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            color: #764ba2;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 6rem 0;
-            background: transparent;
-            color: white;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin: 1rem 0;
-            opacity: 0.9;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: linear-gradient(145deg, #f0f0f0, #ffffff);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-card h3 {
-            color: #764ba2;
-            margin-bottom: 1rem;
-        }
-
-        .skills-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .skills-table th,
-        .skills-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .skills-table th {
-            background: #764ba2;
-            color: white;
-            font-weight: 600;
-        }
-
-        .skills-table tr:hover {
-            background: #f5f5f5;
-        }
-
-        .timeline {
-            position: relative;
-            margin: 2rem 0;
-        }
-
-        .timeline-item {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #764ba2;
-        }
-
-        .timeline-item h3 {
-            color: #764ba2;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item .date {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #764ba2;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .media-section {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        video {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1rem 0;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #667eea;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <!-- External Stylesheet - styles.css -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts - Roboto Family -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-<!-- Navigation Header -->
-        <nav>
+    <!-- ===== HEADER & NAVIGATION SECTION ===== -->
+    <header class="main-header">
+     
+        <nav class="main-nav">
+    
             <div class="logo">Martin Ndegwa</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
+            
+      
+            <ul class="nav-links inline-nav">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#work" class="nav-link">Work</a></li>
+                <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <main class="main-content">
+        
+        <!-- HERO/HOME SECTION -->
+        <section id="home" class="hero-section">
             <div class="container">
-                <h1>Martin Ndegwa</h1>
-                <p>Full Stack Developer & Creative Designer</p>
-                <p>From Nairobi, Kenya - Crafting digital experiences that inspire and engage</p>
+
+                <h1 class="hero-title">Martin Ndegwa</h1>
+                <p class="hero-subtitle">Full Stack Developer & Creative Designer</p>
+                <p class="hero-description">From Nairobi, Kenya - Crafting digital experiences that inspire and engage</p>
+                
+      
+                <div class="hero-buttons">
+                    <a href="#contact" class="cta-button primary">Get In Touch</a>
+                    <a href="#work" class="cta-button secondary">View My Work</a>
+                </div>
             </div>
         </section>
 
-        <section id="about">
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section">
             <div class="container">
-                <h2>About Me</h2>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-                    <div>
-                        <p>I'm a passionate full-stack developer from Nairobi, Kenya, with over 5 years of experience creating innovative web solutions. I specialize in modern JavaScript frameworks and have a keen eye for user-centered design.</p>
-                        <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or enjoying the vibrant tech scene in Nairobi.</p>
+                <h2 class="section-title">About Me</h2>
+                
+
+                <div class="about-grid">
+                  
+                    <div class="about-content">
+                        <p class="about-text">I'm a passionate full-stack developer from Nairobi, Kenya, with over 5 years of experience creating innovative web solutions. I specialize in modern JavaScript frameworks and have a keen eye for user-centered design.</p>
+                        <p class="about-text">When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or enjoying the vibrant tech scene in Nairobi.</p>
                         
-                        <h3>My Skills</h3>
-                        <ul style="list-style-type: none; padding: 0;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">✓ Frontend: React, Vue.js, TypeScript</li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">✓ Backend: Node.js, Python, Express</li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">✓ Database: MongoDB, PostgreSQL, MySQL</li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">✓ Cloud: AWS, Docker, Kubernetes</li>
-                        </ul>
+                        <!-- Skills Overview -->
+                        <div class="skills-overview">
+                            <h3 class="skills-title">My Skills</h3>
+                            <ul class="skills-list">
+                                <li class="skill-item">✓ Frontend: React, Vue.js, TypeScript</li>
+                                <li class="skill-item">✓ Backend: Node.js, Python, Express</li>
+                                <li class="skill-item">✓ Database: MongoDB, PostgreSQL, MySQL</li>
+                                <li class="skill-item">✓ Cloud: AWS, Docker, Kubernetes</li>
+                            </ul>
+                        </div>
                     </div>
                     
+      
                     <div class="media-section">
-                        <h3>Watch My Story</h3>
-                        <video controls width="100%" style="max-width: 400px;">
-                            <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
-                            <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
-                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <h3 class="media-title">Watch My Story</h3>
+                        <div class="video-container">
+                        
+                            <video controls class="portfolio-video">
+                                <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                                <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="work">
+        <!-- WORK/PROJECTS SECTION -->
             <div class="container">
-                <h2>My Work</h2>
-                <p style="text-align: center; margin-bottom: 3rem;">Here are some projects I've worked on recently</p>
+                <h2 class="section-title">My Work</h2>
+                <p class="section-description">Here are some projects I've worked on recently</p>
                 
                 <div class="project-grid">
-                    <article class="project-card">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-featured online shopping platform built with React and Node.js, featuring real-time inventory management and secure payment processing.</p>
-                        <p><strong>Technologies:</strong> React, Node.js, MongoDB, Stripe API</p>
+                    <article class="project-card featured-project">
+                        <div class="project-icon">🛒</div>
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">A full-featured online shopping platform built with React and Node.js, featuring real-time inventory management and secure payment processing.</p>
+                        <p class="project-tech"><strong>Technologies:</strong> React, Node.js, MongoDB, Stripe API</p>
+                        <div class="project-actions">
+                            <button class="project-btn">View Live</button>
+                            <button class="project-btn secondary">View Code</button>
+                        </div>
                     </article>
                     
                     <article class="project-card">
-                        <h3>Task Management App</h3>
-                        <p>A collaborative project management tool with real-time updates, file sharing, and team communication features.</p>
-                        <p><strong>Technologies:</strong> Vue.js, Express, Socket.io, PostgreSQL</p>
+                        <div class="project-icon">📋</div>
+                        <h3 class="project-title">Task Management App</h3>
+                        <p class="project-description">A collaborative project management tool with real-time updates, file sharing, and team communication features.</p>
+                        <p class="project-tech"><strong>Technologies:</strong> Vue.js, Express, Socket.io, PostgreSQL</p>
+                        <div class="project-actions">
+                            <button class="project-btn">View Live</button>
+                            <button class="project-btn secondary">View Code</button>
+                        </div>
                     </article>
                     
                     <article class="project-card">
-                        <h3>Weather Analytics Dashboard</h3>
-                        <p>An interactive dashboard displaying weather data with predictive analytics and customizable visualizations.</p>
-                        <p><strong>Technologies:</strong> React, D3.js, Python, Flask</p>
+                        <div class="project-icon">🌤️</div>
+                        <h3 class="project-title">Weather Analytics Dashboard</h3>
+                        <p class="project-description">An interactive dashboard displaying weather data with predictive analytics and customizable visualizations.</p>
+                        <p class="project-tech"><strong>Technologies:</strong> React, D3.js, Python, Flask</p>
+                        <div class="project-actions">
+                            <button class="project-btn">View Live</button>
+                            <button class="project-btn secondary">View Code</button>
+                        </div>
                     </article>
                 </div>
 
-                <div style="margin-top: 3rem;">
-                    <h3>Technical Proficiency</h3>
-                    <table class="skills-table">
-                        <thead>
-                            <tr>
-                                <th>Technology</th>
-                                <th>Experience Level</th>
-                                <th>Years Used</th>
-                                <th>Last Project</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>JavaScript</td>
-                                <td>Expert</td>
-                                <td>5+ years</td>
-                                <td>E-Commerce Platform</td>
-                            </tr>
-                            <tr>
-                                <td>React</td>
-                                <td>Advanced</td>
-                                <td>4 years</td>
-                                <td>Weather Dashboard</td>
-                            </tr>
-                            <tr>
-                                <td>Node.js</td>
-                                <td>Advanced</td>
-                                <td>4 years</td>
-                                <td>Task Management App</td>
-                            </tr>
-                            <tr>
-                                <td>Python</td>
-                                <td>Intermediate</td>
-                                <td>3 years</td>
-                                <td>Analytics Backend</td>
-                            </tr>
-                            <tr>
-                                <td>AWS</td>
-                                <td>Intermediate</td>
-                                <td>2 years</td>
-                                <td>Cloud Deployment</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Technical Skills Table Section -->
+                <div class="skills-section">
+                    <h3 class="skills-table-title">Technical Proficiency</h3>
+                    <div class="table-container">
+                        <!-- Skills Table with Experience Levels -->
+                        <table class="skills-table">
+                            <thead class="table-header">
+                                <tr>
+                                    <th class="table-cell">Technology</th>
+                                    <th class="table-cell">Experience Level</th>
+                                    <th class="table-cell">Years Used</th>
+                                    <th class="table-cell">Last Project</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr class="table-row">
+                                    <td class="table-cell tech-name">JavaScript</td>
+                                    <td class="table-cell"><span class="badge expert">Expert</span></td>
+                                    <td class="table-cell">5+ years</td>
+                                    <td class="table-cell">E-Commerce Platform</td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-cell tech-name">React</td>
+                                    <td class="table-cell"><span class="badge advanced">Advanced</span></td>
+                                    <td class="table-cell">4 years</td>
+                                    <td class="table-cell">Weather Dashboard</td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-cell tech-name">Node.js</td>
+                                    <td class="table-cell"><span class="badge advanced">Advanced</span></td>
+                                    <td class="table-cell">4 years</td>
+                                    <td class="table-cell">Task Management App</td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-cell tech-name">Python</td>
+                                    <td class="table-cell"><span class="badge intermediate">Intermediate</span></td>
+                                    <td class="table-cell">3 years</td>
+                                    <td class="table-cell">Analytics Backend</td>
+                                </tr>
+                                <tr class="table-row">
+                                    <td class="table-cell tech-name">AWS</td>
+                                    <td class="table-cell"><span class="badge intermediate">Intermediate</span></td>
+                                    <td class="table-cell">2 years</td>
+                                    <td class="table-cell">Cloud Deployment</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="resume">
+        <!-- RESUME SECTION -->
+        <section id="resume" class="resume-section">
             <div class="container">
-                <h2>Resume</h2>
+                <h2 class="section-title">Resume</h2>
                 
-                <div style="margin-bottom: 3rem;">
-                    <h3>Professional Experience</h3>
+                <!-- Professional Experience Timeline -->
+                <div class="resume-section-block">
+                    <h3 class="resume-subtitle">Professional Experience</h3>
+                    <!-- Interactive Timeline -->
                     <div class="timeline">
-                        <div class="timeline-item">
-                            <h3>Senior Full Stack Developer</h3>
-                            <div class="date">TechCorp Solutions | 2022 - Present</div>
-                            <p>Leading a team of 6 developers in building scalable web applications. Implemented microservices architecture that improved system performance by 40%.</p>
-                            <ul style="margin-top: 1rem;">
-                                <li>Architected and developed 3 major client applications</li>
-                                <li>Mentored junior developers and conducted code reviews</li>
-                                <li>Reduced deployment time by 60% through CI/CD optimization</li>
-                            </ul>
+                        <div class="timeline-item current-job">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="job-title">Senior Full Stack Developer</h3>
+                                <div class="job-meta">TechCorp Solutions | 2022 - Present</div>
+                                <p class="job-description">Leading a team of 6 developers in building scalable web applications. Implemented microservices architecture that improved system performance by 40%.</p>
+                                <ul class="job-achievements">
+                                    <li class="achievement">Architected and developed 3 major client applications</li>
+                                    <li class="achievement">Mentored junior developers and conducted code reviews</li>
+                                    <li class="achievement">Reduced deployment time by 60% through CI/CD optimization</li>
+                                </ul>
+                            </div>
                         </div>
                         
                         <div class="timeline-item">
-                            <h3>Full Stack Developer</h3>
-                            <div class="date">Digital Innovations Inc. | 2020 - 2022</div>
-                            <p>Developed responsive web applications using modern JavaScript frameworks and RESTful APIs.</p>
-                            <ul style="margin-top: 1rem;">
-                                <li>Built 15+ production applications serving 10K+ users</li>
-                                <li>Integrated third-party APIs and payment systems</li>
-                                <li>Improved application load times by 35%</li>
-                            </ul>
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="job-title">Full Stack Developer</h3>
+                                <div class="job-meta">Digital Innovations Inc. | 2020 - 2022</div>
+                                <p class="job-description">Developed responsive web applications using modern JavaScript frameworks and RESTful APIs.</p>
+                                <ul class="job-achievements">
+                                    <li class="achievement">Built 15+ production applications serving 10K+ users</li>
+                                    <li class="achievement">Integrated third-party APIs and payment systems</li>
+                                    <li class="achievement">Improved application load times by 35%</li>
+                                </ul>
+                            </div>
                         </div>
                         
                         <div class="timeline-item">
-                            <h3>Frontend Developer</h3>
-                            <div class="date">StartupXYZ | 2019 - 2020</div>
-                            <p>Focused on creating intuitive user interfaces and optimizing user experience across multiple platforms.</p>
-                            <ul style="margin-top: 1rem;">
-                                <li>Designed and implemented responsive UI components</li>
-                                <li>Collaborated with UX team on user research and testing</li>
-                                <li>Achieved 98% cross-browser compatibility</li>
-                            </ul>
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="job-title">Frontend Developer</h3>
+                                <div class="job-meta">StartupXYZ | 2019 - 2020</div>
+                                <p class="job-description">Focused on creating intuitive user interfaces and optimizing user experience across multiple platforms.</p>
+                                <ul class="job-achievements">
+                                    <li class="achievement">Designed and implemented responsive UI components</li>
+                                    <li class="achievement">Collaborated with UX team on user research and testing</li>
+                                    <li class="achievement">Achieved 98% cross-browser compatibility</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <h3>Education & Certifications</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h3>Bachelor of Science in Computer Science</h3>
-                            <div class="date">University of Technology | 2015 - 2019</div>
-                            <p>Graduated Magna Cum Laude with focus on Software Engineering and Database Systems.</p>
+                <div class="resume-section-block">
+                    <h3 class="resume-subtitle">Education & Certifications</h3>
+                    <div class="education-grid">
+                        <div class="education-item">
+                            <div class="education-icon">🎓</div>
+                            <h3 class="education-title">Bachelor of Science in Computer Science</h3>
+                            <div class="education-meta">University of Technology | 2015 - 2019</div>
+                            <p class="education-description">Graduated Magna Cum Laude with focus on Software Engineering and Database Systems.</p>
                         </div>
                         
-                        <div class="timeline-item">
-                            <h3>AWS Certified Solutions Architect</h3>
-                            <div class="date">Amazon Web Services | 2023</div>
-                            <p>Professional certification in cloud architecture and deployment strategies.</p>
+                        <div class="education-item">
+                            <div class="education-icon">☁️</div>
+                            <h3 class="education-title">AWS Certified Solutions Architect</h3>
+                            <div class="education-meta">Amazon Web Services | 2023</div>
+                            <p class="education-description">Professional certification in cloud architecture and deployment strategies.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-<!-- Contact Section-->
-        
-        <section id="contact">
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section">
             <div class="container">
-                <h2>Contact Me</h2>
-                <p style="text-align: center; margin-bottom: 3rem;">Let's discuss your next project or opportunity</p>
+                <h2 class="section-title">Contact Me</h2>
+                <p class="section-description">Let's discuss your next project or opportunity</p>
                 
-                <form class="contact-form" action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Company/Organization</label>
-                        <input type="text" id="company" name="company">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="project-type">Project Type</label>
-                        <select id="project-type" name="project-type">
-                            <option value="">Select a project type</option>
-                            <option value="web-development">Web Development</option>
-                            <option value="mobile-app">Mobile Application</option>
-                            <option value="consulting">Technical Consulting</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="budget">Project Budget Range</label>
-                        <select id="budget" name="budget">
-                            <option value="">Select budget range</option>
-                            <option value="under-5k">Under $5,000</option>
-                            <option value="5k-15k">$5,000 - $15,000</option>
-                            <option value="15k-50k">$15,000 - $50,000</option>
-                            <option value="over-50k">Over $50,000</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="timeline">Project Timeline</label>
-                        <input type="date" id="timeline" name="timeline">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Project Description *</label>
-                        <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project, goals, and requirements..."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="newsletter" name="newsletter" value="yes">
-                            <label for="newsletter">Subscribe to my newsletter for web development tips</label>
+                <!-- Contact Information and Form Layout -->
+                <div class="contact-wrapper">
+                    <!-- Left: Contact Information -->
+                    <div class="contact-info">
+                        <h3 class="contact-subtitle">Get In Touch</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span class="contact-text">martin.ndegwa@email.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text">+254 712 345 678</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span class="contact-text">Nairobi, Kenya</span>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="urgent" name="urgent" value="yes">
-                            <label for="urgent">This is an urgent project</label>
+
+                    <form class="contact-form" action="#" method="POST">
+                      
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="hidden" name="form-source" value="portfolio-website">
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </div>
-                </form>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company" class="form-label">Company/Organization</label>
+                                <input type="text" id="company" name="company" class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="project-type" class="form-label">Project Type</label>
+                                <select id="project-type" name="project-type" class="form-select">
+                                    <option value="">Select a project type</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="mobile-app">Mobile Application</option>
+                                    <option value="consulting">Technical Consulting</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget" class="form-label">Project Budget Range</label>
+                                <select id="budget" name="budget" class="form-select">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-5k">Under $5,000</option>
+                                    <option value="5k-15k">$5,000 - $15,000</option>
+                                    <option value="15k-50k">$15,000 - $50,000</option>
+                                    <option value="over-50k">Over $50,000</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline" class="form-label">Project Timeline</label>
+                            <input type="date" id="timeline" name="timeline" class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Project Description *</label>
+                            <textarea id="message" name="message" rows="6" class="form-textarea" required placeholder="Tell me about your project, goals, and requirements..."></textarea>
+                        </div>
+                        
+                        <div class="checkbox-grid">
+                            <div class="form-group">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="newsletter" name="newsletter" value="yes" class="form-checkbox">
+                                    <label for="newsletter" class="checkbox-label">Subscribe to my newsletter for web development tips</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="urgent" name="urgent" value="yes" class="form-checkbox">
+                                    <label for="urgent" class="checkbox-label">This is an urgent project</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="hidden" name="form-source" value="portfolio-website">
+                            <button type="submit" class="submit-btn">
+                                <span>Send Message</span>
+                                <span class="btn-icon">→</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer Navigation -->
-    
-    <footer>
+    <!-- ===== FOOTER SECTION ===== -->
+    <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Martin Ndegwa. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <p>Built with passion for My GoMyCode Masters Degree</p>
+            <!-- Footer Content Grid -->
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Martin Ndegwa</h4>
+                    <p class="footer-text">Full Stack Developer & Creative Designer</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#work" class="footer-link">Work</a></li>
+                        <li><a href="#resume" class="footer-link">Resume</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Martin Ndegwa. All rights reserved.</p>
+                <p class="credits">Built with passion for My GoMyCode Masters Degree</p>
+            </div>
         </div>
     </footer>
 </body>
